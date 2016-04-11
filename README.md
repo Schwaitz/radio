@@ -1,7 +1,7 @@
 Open Source radiopanel.txt generator
 ======
 
-[Link](http://www.justwas.com/radio/)
+[Link to radiopanel.txt generator](http://www.justwas.com/radio/)
 
 ##Instructions
 
