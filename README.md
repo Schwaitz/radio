@@ -1,9 +1,9 @@
- Open Source radiopanel.txt generator
-  ======
-  
- [Link](http://www.justwas.com/radio/)
-  
-  ##Instructions
+# radiopanel.txt
+
+Open Source radiopanel.txt generator
+======
+[radiopanel.txt Generator Link](http://www.justwas.com/radio/)
+ ##Instructions
   
 1. Go to the link above
 2. Drag and drop radio commands into one of the three boxes
