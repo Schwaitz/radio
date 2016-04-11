@@ -21,11 +21,12 @@ function() {
     
             $("#cmd_b").click(function() {
             
-            var name = $("#cmd_name").val();
+
             var label = $("#cmd_label").val();
             var cmd = $("#cmd_cmd").val();
-            
-            var str = "<li label=\"" + label + "\" value=\"" + cmd + "\" data-draggable=\"item\" draggable=\"true\" aria-grabbed=\"false\" tabindex=\"0\">" + name + "</li>";
+
+
+            var str = '<li label="' + label + '" value="' + cmd + '" data-draggable="item" draggable="true" aria-grabbed="false" tabindex="0">' + label + '</li>';
             
             $("#unused").append(str);
 
@@ -42,8 +43,10 @@ function() {
     var rmValue1 = [];
     var rmLabels1 = [];
 
+ 
     var rmValue2 = [];
     var rmLabels2 = [];
+
 
     var rmValue3 = [];
     var rmLabels3 = [];
@@ -64,7 +67,7 @@ function() {
             if ($(this).attr("id") == "rm1") {
 
                 $(this).children("ol").children("li").each(function() {
-
+                    
                     rmLabels1.push($(this).attr("label"));
                     rmValue1.push($(this).attr("value"));
                 });
@@ -75,6 +78,7 @@ function() {
 
                 $(this).children("ol").children("li").each(function() {
 
+
                     rmLabels2.push($(this).attr("label"));
                     rmValue2.push($(this).attr("value"));
                 });
@@ -84,7 +88,8 @@ function() {
             if ($(this).attr("id") == "rm3") {
 
                 $(this).children("ol").children("li").each(function() {
-
+                    
+      
                     rmLabels3.push($(this).attr("label"));
                     rmValue3.push($(this).attr("value"));
                 });
@@ -101,7 +106,6 @@ function() {
 
         for (var i = 0; i < rmValue1.length; i++) {
             rmArray1[rmValue1[i]] = rmLabels1[i];
-
         }
 
         for (var i = 0; i < rmValue2.length; i++) {

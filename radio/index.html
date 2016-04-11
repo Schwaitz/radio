@@ -118,7 +118,6 @@
     <div id="creationDiv">
         <fieldset>
             <legend>Command Creator:</legend>
-        <input id="cmd_name" class="cmd" type="text"></input>
         <br>
         <input id="cmd_label" class="cmd" type="text"></input>
         <br>
@@ -126,15 +125,28 @@
         <br>
         <input id="cmd_b" class="cmdB" type="button" value="Create Command"></input>
         
-        <p><li>The "Name" text box represents the name that<br>
-        will appear in the unused box up at the top.</li><br>
+        <p>
         
         <li>The "label" text box is the label for the entry.<br>
-        This must <b>NOT</b> contain any spaces.</li><br>
+        This may contain spaces.</li><br>
         
         <li>The "Command" text box is the actual<br>
         CS:GO Console command that will be used.<br>
-        Example: "sv_cheats 1;cl_drawhud 0;noclip"</li></p>
+        Example: <i>cl_drawhud 0</i><br>
+        <b>Note:</b> for this particular command,<br>
+        sv_cheats 1 must be enabled for it to run.
+        </li><br><br>
+        
+        Due to the limitations of the radiopanel.txt<br>
+        file, only single commands can be used. <b>BUT</b><br>
+        you can use already existing aliases as commands.<br>
+        Go into your autoexec.cfg file, and add a<br>
+        multicommand alias, and then use the alias<br>
+        as your command in this program. Example: <br>
+        <i>alias screenshotMode "sv_cheats 1;cl_drawhud0"</i>
+        
+        
+        </p>
         
         </fieldset>
     </div>

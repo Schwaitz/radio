@@ -78,7 +78,7 @@ foreach($array as $a){
             foreach($rm1 as $r){
                $exp = explode(':', $r);
                
-               print("		        	\"$exp[1]\"\n");
+               print("		        	\"$exp[2]\"\n");
                print("		        	{\n");
                print("		        	    \"hotkey\"   \"$index\"\n");
                $index+=1;
@@ -106,7 +106,7 @@ foreach($array as $a){
             foreach($rm2 as $r){
                $exp = explode(':', $r);
                
-               print("		        	\"$exp[1]\"\n");
+               print("		        	\"$exp[2]\"\n");
                print("		        	{\n");
                print("		        	    \"hotkey\"   \"$index\"\n");
                $index+=1;
@@ -134,7 +134,7 @@ foreach($array as $a){
             foreach($rm3 as $r){
                $exp = explode(':', $r);
                
-               print("		        	\"$exp[1]\"\n");
+               print("		        	\"$exp[2]\"\n");
                print("		        	{\n");
                print("		        	    \"hotkey\"   \"$index\"\n");
                $index+=1;
