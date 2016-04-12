@@ -46,7 +46,9 @@ select {
 fieldset {
 display: inline-block;
   border: 2px solid silver;
-  margin-bottom:50px;
+  margin-bottom:10px;
+  
+
 }
 
 fieldset legend {
@@ -54,7 +56,7 @@ fieldset legend {
 }
 
 fieldset div {
-
+    
 }
 
 
@@ -68,6 +70,18 @@ margin-bottom: 10px;
     bottom:0;
     right: 10px;
 }
+
+
+#gen{
+    margin-right: 75px;;
+    float:left;
+}
+
+#optionsDiv{
+    
+    float:left;
+}
+
 
 
 

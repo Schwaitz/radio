@@ -5,6 +5,7 @@
     <title>radiopanel.txt generator</title>
     
     <script src="../javascript/jquery-1.12.2.min.js" type="text/javascript"></script>
+    <script src="../javascript/jquery-ui.min.js" type="text/javascript"></script>
     <script src="../javascript/jquery.watermarkinput.js" type="text/javascript"></script>
     
     <script src="./functions.js" type="text/javascript"></script>
@@ -20,6 +21,8 @@
 <h2>radiopanel.txt</h2>
 
     <div id="gen">
+        
+        
         <fieldset>
         <legend>Radio Boxes:</legend>
     <div id="rm1" class="box">
@@ -100,11 +103,15 @@
     
     <script src="drag.js" type="text/javascript"> </script>
     
-    
+    <br>
 
             </fieldset>
     </div>
 
+
+    <div id="optionsDiv">
+        
+        
 
     <div id="bu">
          <fieldset>
@@ -113,6 +120,7 @@
                 <input class="create" type="button" id="create" value="Create a Command"></input>
         </fieldset>
          
+         </div>
          
          
     <div id="creationDiv">
@@ -137,21 +145,17 @@
         sv_cheats 1 must be enabled for it to run.
         </li><br><br>
         
-        Due to the limitations of the radiopanel.txt<br>
-        file, only single commands can be used. <b>BUT</b><br>
-        you can use already existing aliases as commands.<br>
-        Go into your autoexec.cfg file, and add a<br>
-        multicommand alias, and then use the alias<br>
-        as your command in this program. Example: <br>
-        <i>alias screenshotMode "sv_cheats 1;cl_drawhud0"</i>
-        
-        
+        Multi-line commands <b>DO</b> in fact work!<br>
+        In the command box, enter your commands in<br>
+        this format: <i>sv_cheats 1;cl_drawhud 0;noclip</i>
         </p>
         
         </fieldset>
+        
+        
     </div>
 
-                
+    
     </div>
     
 

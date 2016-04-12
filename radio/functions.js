@@ -15,7 +15,7 @@ function() {
         if ($("#creationDiv").is(":visible")) {
             $("#creationDiv").hide(1000);
         } else {
-            $("#creationDiv").show(1000);
+            $("#creationDiv").show(1000, "easeInOutCubic");
         }
     });
     
