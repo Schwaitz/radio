@@ -13,4 +13,4 @@ Open Source radiopanel.txt generator
 5. Rename your original “radiopanel.txt” to something else as a backup
 6. Place the new radiopanel.txt file in the directory
  * Windows Directory: *C:\Program Files\Steam\steamapps\common\Counter-Strike Global Offensive\csgo\resource\ui\radiopanel.txt*
- * Mac Directory: *Macintosh HD ▸ Users ▸ $User ▸ Library ▸ Application Support ▸ Steam ▸ steamapps ▸ common ▸ Counter-Strike Global Offensive ▸ csgo ▸ resource ▸ ui*
+ * */Users/$Name/Library/Application Support/Steam/steamapps/common/Counter-Strike Global Offensive/csgo/resource/ui*
