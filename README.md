@@ -4,7 +4,7 @@ Open Source radiopanel.txt generator
 ======
 [radiopanel.txt Generator Link](http://www.justwas.com/radio/)
 
- # Instructions
+Instructions: 
   
 1. Go to the link above
 2. Drag and drop radio commands into one of the three boxes
