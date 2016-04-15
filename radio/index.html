@@ -2,165 +2,159 @@
 
 <html>
 <head>
-    <title>radiopanel.txt generator</title>
+    <title>CS:GO radiopanel.txt generator</title>
     
-    <script src="../javascript/jquery-1.12.2.min.js" type="text/javascript"></script>
-    <script src="../javascript/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="../javascript/jquery.watermarkinput.js" type="text/javascript"></script>
-    
-    <script src="./functions.js" type="text/javascript"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
     
     <link rel="stylesheet" type="text/css" href="./style.css">
-    
-    
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 
 <body>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<h2>CS:GO RadioPanel Generator</h2>
+			</div>
+		</div>
+	</nav>
+<div class="container-fluid">
+    <div id="gen" class="col-md-9 col-sm-12 col-xs-12">
+		<h3>Radio's:</h3>
+		<div class="row">
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<div id="radio1" class="panel panel-default">
+				  <div class="panel-heading">
+					<span class="panel-title" data-toggle="tooltip" title="Radio Menu Name<br>(click to edit)" contenteditable>Radio 1</span><kbd data-toggle="tooltip" title="Default key to open this menu in game" style="float:right;">Z</kbd>
+				  </div>
+				  <div class="panel-body" >
+					<ul id="radio1List" class="list-group">
+						<li class="list-group-item" label="Go!" value="go" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="go"></span>Go!</li>
 
-<h2>radiopanel.txt</h2>
+						<li class="list-group-item" label="Team, Fall Back!" value="fallback" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="fallback"></span>Team, Fall Back!</li>
 
-    <div id="gen">
-        
-        
-        <fieldset>
-        <legend>Radio Boxes:</legend>
-    <div id="rm1" class="box">
+						<li class="list-group-item" label="Stick Together, Team" value="sticktog" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="sticktog"></span>Stick Together, Team</li>
 
+						<li class="list-group-item" label="Hold This Position!" value="holdpos" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="holdpos"></span>Hold This Position!</li>
 
-        <h2>Radio Messages 1</h2>
+						<li class="list-group-item" label="Follow Me!" value="followme" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="followme"></span>Follow Me!</li>
+					</ul>
+				  </div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<div id="radio2" class="panel panel-default">
+				  <div class="panel-heading">
+					<span class="panel-title" data-toggle="tooltip" title="Radio Menu Name<br>(click to edit)" contenteditable>Radio 2</span><kbd data-toggle="tooltip" title="Default key to open this menu in game" style="float:right;" >X</kbd>
+				  </div>
+				  <div class="panel-body" >
+					<ul id="radio2List" class="list-group">
+						<li class="list-group-item" label="Yes" value="roger" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="roger"></span>Yes</li>
 
-        <ol data-draggable="target">
-            <li label="#SFUI_Radio_Go" value="go" data-draggable="item">Go!</li>
+						<li class="list-group-item" label="No" value="negative" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="negative"></span>No</li>
 
-            <li label="#SFUI_Radio_Fall_Back" value="fallback" data-draggable="item">Team, Fall Back!</li>
+						<li class="list-group-item" label="Cheer" value="cheer" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="cheer"></span>Cheer</li>
 
-            <li label="#SFUI_Radio_Stick_Together" value="sticktog" data-draggable="item">Stick Together, Team</li>
+						<li class="list-group-item" label="Complement" value="compliment" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="compliment"></span>Complement</li>
 
-            <li label="#SFUI_Radio_Hold_Pos" value="holdpos" data-draggable="item">Hold This Position!</li>
+						<li class="list-group-item" label="Thanks" value="thanks" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="thanks"></span>Thanks</li>
+					</ul>
+				  </div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<div id="radio3" class="panel panel-default">
+				  <div class="panel-heading">
+					<span class="panel-title" data-toggle="tooltip" title="Radio Menu Name<br>(click to edit)" contenteditable>Radio 3</span><kbd data-toggle="tooltip" title="Default key to open this menu in game" style="float:right;" >C</kbd>
+				  </div>
+				  <div class="panel-body" >
+					<ul id="radio3List" class="list-group">
+						<li class="list-group-item" label="Enemy Spotted" value="enemyspot" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="enemyspot"></span>Enemy Spotted</li>
 
-            <li label="#SFUI_Radio_Follow" value="followme" data-draggable="item">Follow Me!</li>
-        </ol>
+						<li class="list-group-item" label="Need Backup" value="needbackup" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="needbackup"></span>Need Backup</li>
+
+						<li class="list-group-item" label="You Take the Point" value="takepoint" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="takepoint"></span>You Take the Point</li>
+
+						<li class="list-group-item" label="Sector Clear" value="sectorclear" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="sectorclear"></span>Sector Clear</li>
+
+						<li class="list-group-item" label="I'm in Position" value="inposition" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="inposition"></span>I'm in Position</li>
+					</ul>
+				  </div>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+				<div id="unused" class="panel panel-default">
+				  <div class="panel-heading">
+					<span class="panel-title">Unused</span>
+				  </div>
+				  <div class="panel-body" >
+					<ul id="unusedList" class="list-group">
+						<li class="list-group-item" label="Cover Me!" value="coverme" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="coverme"></span>Cover Me!</li>
+
+						<li class="list-group-item" label="Regroup, Team!" value="regroup" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="regroup"></span>Regroup, Team!</li>
+
+						<li class="list-group-item" label="Taking Fire, Need Assistance!" value="takingfire" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="takingfire"></span>Taking Fire, Need Assistance!</li>
+
+						<li class="list-group-item" label="Report In" value="report" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="report"></span>Report In</li>
+
+						<li class="list-group-item" label="She's gonna Blow!" value="getout" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="getout"></span>She's gonna Blow!</li>
+
+						<li class="list-group-item" label="Enemy Down" value="enemydown" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="enemydown"></span>Enemy Down</li>
+
+						<li class="list-group-item" label="Reporting In" value="reportingin" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="reportingin"></span>Reporting In</li>
+					</ul>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6 col-sm-12 col-xs-12">
+			<p>Drag and drop items from each box.</p>
+			<p>Hold shift to select multiple items.</p>
+			<p>The items in the unused column will not be included in the radiopanel.txt file.</p>
+		</div>
+		<div class="col-md-6 col-sm-12 col-xs-12">
+			<button id="Generate" class="btn btn-success">Download <span class="glyphicon glyphicon-download-alt"></span></button>
+			<button id="View" class="btn btn-primary">View <span class="glyphicon glyphicon-new-window"></span></button>
+			<button id="Reset" class="btn btn-danger">Reset <span class="glyphicon glyphicon-refresh"></span></button>
+		</div>
     </div>
 
-    <div id="rm2" class="box">
-        <h2>Radio Messages 2</h2>
 
-        <ol data-draggable="target">
-            <li label="#SFUI_Radio_Roger" value="roger" data-draggable="item">Yes</li>
-
-            <li label="#SFUI_Radio_Negative" value="negative" data-draggable="item">No</li>
-
-            <li label="#SFUI_Radio_Cheer" value="cheer" data-draggable="item">Cheer</li>
-
-            <li label="#SFUI_Radio_Compliment" value="compliment" data-draggable="item">Complement</li>
-
-            <li label="#SFUI_Radio_Thanks" value="thanks" data-draggable="item">Thanks</li>
-        </ol>
-    </div>
-
-    <div id="rm3" class="box">
-        <h2>Radio Messages 3</h2>
-
-        <ol data-draggable="target">
-            <li label="#SFUI_Radio_Spotted" value="enemyspot" data-draggable="item">Enemy Spotted</li>
-
-            <li label="#SFUI_Radio_Need_Backup" value="needbackup" data-draggable="item">Need Backup</li>
-
-            <li label="#SFUI_Radio_Take_Point" value="takepoint" data-draggable="item">You Take the Point</li>
-
-            <li label="#SFUI_Radio_Sector_Clear" value="sectorclear" data-draggable="item">Sector Clear</li>
-
-            <li label="#SFUI_Radio_In_Position" value="inposition" data-draggable="item">I'm in Position</li>
-        </ol>
-    </div>
-
-    <div id="rm4" class="box">
-        <h2>Unused Messages</h2>
-
-        <ol id="unused" data-draggable="target">
-            <li label="#SFUI_Radio_Cover_me" value="coverme" data-draggable="item">Cover Me!</li>
-
-            <li label="#SFUI_Radio_Regroup" value="regroup" data-draggable="item">Regroup, Team!</li>
-
-            <li label="#SFUI_Radio_Need_Assist" value="takingfire" data-draggable="item">Taking Fire, Need Assistance!</li>
-
-            <li label="#SFUI_Radio_Report_In" value="report" data-draggable="item">Report In</li>
-
-            <li label="#SFUI_Radio_Shes_Gonna_Blow" value="getout" data-draggable="item">She's gonna Blow!</li>
-
-            <li label="#SFUI_Radio_Enemy_Down" value="enemydown" data-draggable="item">Enemy Down</li>
-
-            <li label="#SFUI_Radio_Reporting_Int" value="reportingin" data-draggable="item">Reporting In</li>
-        </ol>
-    </div>
-    
-    <p>Drag and drop items from each box.<br>
-    Hold shift to select multiple items.<br><br>
-    The items in the unused column will not<br>
-    be included in the radiopanel.txt file.</p>
-    
-    
-    <script src="drag.js" type="text/javascript"> </script>
-    
-    <br>
-
-            </fieldset>
-    </div>
-
-
-    <div id="optionsDiv">
-        
-        
-
-    <div id="bu">
-         <fieldset>
-                <legend>Options:</legend>
-                <input class="subButton" type="button" id="view" value="View radiopanel.txt"></input>
-                <input class="create" type="button" id="create" value="Create a Command"></input>
-        </fieldset>
-         
-         </div>
-         
-         
-    <div id="creationDiv">
-        <fieldset>
-            <legend>Command Creator:</legend>
-        <br>
-        <input id="cmd_label" class="cmd" type="text"></input>
-        <br>
-        <input id="cmd_cmd" class="cmd" type="text"></input>
-        <br>
-        <input id="cmd_b" class="cmdB" type="button" value="Create Command"></input>
-        
-        <p>
-        
-        <li>The "label" text box is the label for the entry.<br>
-        This may contain spaces.</li><br>
-        
-        <li>The "Command" text box is the actual<br>
-        CS:GO Console command that will be used.<br>
-        Example: <i>cl_drawhud 0</i><br>
-        <b>Note:</b> for this particular command,<br>
-        sv_cheats 1 must be enabled for it to run.
-        </li><br><br>
-        
-        Multi-line commands <b>DO</b> in fact work!<br>
-        In the command box, enter your commands in<br>
-        this format: <i>sv_cheats 1;cl_drawhud 0;noclip</i>
-        </p>
-        
-        </fieldset>
-        
-        
-    </div>
-
-    
-    </div>
-    
-
-    
-    <p id="footer"><i>created by <a href="http://www.reddit.com/u/mcJustWas">/u/mcJustWas</a> for <a href="http://www.reddit.com/r/GlobalOffensive">/r/GlobalOffensive</a> and <a href="http://www.reddit.com/r/GlobalOffensiveTrade">/r/GlobalOffensiveTrade</a></i>
-    
+    <div id="optionsDiv"  class="col-md-3 col-sm-12 col-xs-12">
+			<h3>Create Custom Commands</h3>
+			<form id="CustomCommands">
+				<div class="form-group">
+					<label for="NewLabel">Label/Name:</label>
+					<input type="text" class="form-control" autocomplete="off" id="NewLabel" placeholder="Label/Name" required>
+				</div>
+				<div class="form-group">
+					<label for="NewCommand">Command(s):</label>
+					<textarea class="form-control" autocomplete="off" id="NewCommand" placeholder="Command(s)" required></textarea>
+				</div>
+				<button type="submit" id="CreateNew" class="btn btn-primary">Create Command</button>
+			</form>
+					
+			<p>The "label" text box is the label for the entry.<br>
+			This may contain spaces.</p>
+			
+			<p>The "Command" text box is the actual CS:GO Console command that will be used.</p>
+			<p>Example: <pre>voice_enable 0</pre></p>
+			
+			<p>Multi-line commands <strong>work!</strong><br>
+			In the command box, enter your commands in this format: <pre>sv_cheats 1;cl_drawhud 0;noclip</pre></p>
+			
+		</div>
+	</div>
+	<div id="footer" class="container-fluid">
+		<p><i>created by <a href="http://www.reddit.com/u/mcJustWas">/u/mcJustWas</a> for <a href="http://www.reddit.com/r/GlobalOffensive">/r/GlobalOffensive</a> and <a href="http://www.reddit.com/r/GlobalOffensiveTrade">/r/GlobalOffensiveTrade</a></i>
+	</div>
+    <script src="../javascript/jquery-1.12.2.min.js" type="text/javascript"></script>
+    <script src="../javascript/jquery.autocomplete.min.js" type="text/javascript"></script>
+    <script src="../javascript/sortable.min.js" type="text/javascript"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="./functions.js" type="text/javascript"></script>
 </body>
 </html>

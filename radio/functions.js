@@ -1,154 +1,136 @@
-$(document).ready(
+//Check if items already stored in database
+if (localStorage.getItem('Radios')){
+	radios = JSON.parse(localStorage.getItem('Radios'));
+	$('.list-group').html('')
+	var i=0;
+	Object.keys(radios).forEach(function(key){
+		var items = radios[key];
+		$('.panel-title').eq(i).html(key);
+		Object.keys(items).forEach(function(item){
+			var label=item;
+			var cmd=items[item];
+			str = '<li class="list-group-item" label="'+label+'" value="'+cmd+'" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="'+cmd.replace(/;/g,";<br>")+'"></span>'+label+'</li>';
+			$('.list-group').eq(i).append(str);
+		});
+		i++;
+	});
+}
 
-
-function() {
-
-
-    $("#cmd_name").Watermark("Name");
-    $("#cmd_label").Watermark("Label");
-    $("#cmd_cmd").Watermark("Command");
-
-    $("#creationDiv").hide(0);
-
-    $("#create").click(function() {
-
-        if ($("#creationDiv").is(":visible")) {
-            $("#creationDiv").hide(1000);
-        } else {
-            $("#creationDiv").show(1000, "easeInOutCubic");
-        }
-    });
-    
-            $("#cmd_b").click(function() {
-            
-
-            var label = $("#cmd_label").val();
-            var cmd = $("#cmd_cmd").val();
-
-
-            var str = '<li label="' + label + '" value="' + cmd + '" data-draggable="item" draggable="true" aria-grabbed="false" tabindex="0">' + label + '</li>';
-            
-            $("#unused").append(str);
-
-            $('#cmd_name').val('');
-            $('#cmd_label').val('');
-            $('#cmd_cmd').val('');
-            
-            
-    });
-
-    
-
-
-    var rmValue1 = [];
-    var rmLabels1 = [];
-
- 
-    var rmValue2 = [];
-    var rmLabels2 = [];
-
-
-    var rmValue3 = [];
-    var rmLabels3 = [];
-
-
-    var rmArray1 = {};
-    var rmArray2 = {};
-    var rmArray3 = {};
-
-
-    $("#view").click(function() {
-
-
-
-        $(".box").each(function() {
-
-
-            if ($(this).attr("id") == "rm1") {
-
-                $(this).children("ol").children("li").each(function() {
-                    
-                    rmLabels1.push($(this).attr("label"));
-                    rmValue1.push($(this).attr("value"));
-                });
-            }
-
-
-            if ($(this).attr("id") == "rm2") {
-
-                $(this).children("ol").children("li").each(function() {
-
-
-                    rmLabels2.push($(this).attr("label"));
-                    rmValue2.push($(this).attr("value"));
-                });
-            }
-
-
-            if ($(this).attr("id") == "rm3") {
-
-                $(this).children("ol").children("li").each(function() {
-                    
-      
-                    rmLabels3.push($(this).attr("label"));
-                    rmValue3.push($(this).attr("value"));
-                });
-            }
-
-
-
-
-
-        });
-
-
-
-
-        for (var i = 0; i < rmValue1.length; i++) {
-            rmArray1[rmValue1[i]] = rmLabels1[i];
-        }
-
-        for (var i = 0; i < rmValue2.length; i++) {
-            rmArray2[rmValue2[i]] = rmLabels2[i];
-
-        }
-
-        for (var i = 0; i < rmValue3.length; i++) {
-            rmArray3[rmValue3[i]] = rmLabels3[i];
-
-        }
-
-
-
-        var array = {};
-
-        array["rm1"] = rmArray1;
-        array["rm2"] = rmArray2;
-        array["rm3"] = rmArray3;
-
-
-
-        post('./view.php/', {
-            value: JSON.stringify(array)
-        });
-
-
-
-    });
-
-
-
-
+//Get commands list & enable autocomplete
+$.getJSON( "commands.json", function( data ) {
+	$('#NewCommand').autocomplete({
+		delimiter:";",
+		lookup:data,
+		minChars:2
+	});
 });
 
+//Enable tooltips & show tooltip about title
+$('[data-toggle="tooltip"]').tooltip({html:true,trigger:"hover focus click"});
+$('#radio2 [data-toggle="tooltip"]').eq(0).tooltip("show").on('hide.bs.tooltip',function(){$("#radio2 .tooltip").removeClass("highlight");});
+$('#radio2 .tooltip').addClass("highlight");
+
+//Gather data from list's and save to database
+function saveData() {
+	var rmArray1 = {};
+	var rmArray2 = {};
+	var rmArray3 = {};
+	var unusedArr = {};
+	
+	$("#radio1 li").each(function() {
+		var label = $(this).attr("label");
+		rmArray1[label]=$(this).attr("value");
+	});
+	
+	$("#radio2 li").each(function() {
+		var label = $(this).attr("label");
+		rmArray2[label]=$(this).attr("value");
+	});
+	
+	$("#radio3 li").each(function() {
+		var label = $(this).attr("label");
+		rmArray3[label]=$(this).attr("value");
+	});
+
+	$("#unused li").each(function() {
+		var label = $(this).attr("label");
+		unusedArr[label]=$(this).attr("value");
+	});
+	var array = {};
+
+	array[$('#radio1 .panel-title').html()] = rmArray1;
+	array[$('#radio2 .panel-title').html()] = rmArray2;
+	array[$('#radio3 .panel-title').html()] = rmArray3;
+	array['Unused'] = unusedArr;
 
 
+	
+	localStorage.setItem('Radios', JSON.stringify(array));
+	radios = array;
+}
+//Save data when user leaves page or refreshes page
+window.onbeforeunload = function(){if (!reset) saveData();}
 
+//Delete Commands
+$(document).on('click','.glyphicon-remove-sign',function(e){
+	e.preventDefault();
+	$(this).parent().parent().remove();
+	saveData();
+});
 
+//Create New Command
+$("#CreateNew").click(function(e) {
+	e.preventDefault();
+	$('#CustomCommands input').each(function(){
+		$(this).val()==""?$(this).focus().parent().addClass("has-error"):$(this).parent().removeClass("has-error");
+	});
+	if ($('#CustomCommands .has-error').length > 0) {
+		return;
+	}
+	var label = $("#NewLabel").val();
+	var cmd = $("#NewCommand").val();
 
+	var str = '<li class="list-group-item" label="'+label+'" value="'+cmd+'" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="'+cmd.replace(/;/g,";<br>")+'"></span>'+label+'</li>';
+	
+	$("#unusedList").append(str);
+	$('#NewLabel').blur().val('');
+	$('#NewCommand').blur().val('');
+	$('[data-toggle="tooltip"]').tooltip({html:true,trigger:"hover focus click"});
+	saveData();
+});
 
+//Make list sortable
+Sortable.create(radio1List, { group: "commands", filter: ".glyphicon", ghostClass: "sortable-ghost", onMove: function(){saveData();}});
+Sortable.create(radio2List, { group: "commands", filter: ".glyphicon", ghostClass: "sortable-ghost", onMove: function(){saveData();}});
+Sortable.create(radio3List, { group: "commands", filter: ".glyphicon", ghostClass: "sortable-ghost", onMove: function(){saveData();}});
+Sortable.create(unusedList, { group: "commands", filter: ".glyphicon", ghostClass: "sortable-ghost", onMove: function(){saveData();}});
 
+//Generate 'radiopanel.txt'
+$("#Generate").click(function(){
+	saveData();
+	delete radios.Unused;
+	post('./view.php', {
+		value: JSON.stringify(radios)
+	});
+});
 
+//View 'radiopanel.txt' in modal
+$("#View").click(function(){
+	saveData();
+	delete radios.Unused;
+	post('./view.php?view', {
+		value: JSON.stringify(radios)
+	});
+});
+
+//Delete stored data
+$("#Reset").click(function(){
+	localStorage.removeItem('Radios');
+	reset=true;
+	location.reload();
+});
+
+//post data
 function post(path, params, method) {
     method = method || "post"; // Set method to post by default if not specified.
 
