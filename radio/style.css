@@ -62,7 +62,16 @@ option {
   -moz-user-select: none;      /* Firefox */
   -ms-user-select: none;       /* IE/Edge */
 }
+#content{
+	padding-bottom:50px;
+}
 #footer {
+	background-color:#333;
+	color:white;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
 	padding-top:20px;
 	border-top:solid 1px #ccc;
 	text-align:center;
