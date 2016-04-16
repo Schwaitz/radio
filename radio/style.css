@@ -9,6 +9,7 @@
 }
 
 body {
+	position:relative;
     background-color: white;
     background-image: url(../extras/background.png);
     background-size: cover;
