@@ -88,8 +88,14 @@ $("#CreateNew").click(function(e) {
 		return;
 	}
 	var label = $("#NewLabel").val();
-	var cmd = $("#NewCommand").val();
-
+	var cmd = $("#NewCommand").val().replace(/\/\/.*|\"/g,'').replace(/(?:\r\n|\r|\n)/g,";").replace(/\s+/g," ").replace(/;+|\s+;+|;+\s+/g,";");	
+	if (cmd.substring(0,1)===";"){
+		cmd = cmd.substring(1);
+	}
+	if (cmd.substring(--cmd.length)===";"){
+		cmd = cmd.substring(0,--cmd.length);
+	}
+	
 	var str = '<li class="list-group-item" label="'+label+'" value="'+cmd+'" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="'+cmd.replace(/;/g,";<br>")+'"></span>'+label+'</li>';
 	
 	$("#unusedList").append(str);
