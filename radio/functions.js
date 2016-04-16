@@ -81,7 +81,7 @@ $(document).on('click','.glyphicon-remove-sign',function(e){
 //Create New Command
 $("#CreateNew").click(function(e) {
 	e.preventDefault();
-	$('#CustomCommands input').each(function(){
+	$('#CustomCommands [required]').each(function(){
 		$(this).val()==""?$(this).focus().parent().addClass("has-error"):$(this).parent().removeClass("has-error");
 	});
 	if ($('#CustomCommands .has-error').length > 0) {
