@@ -78,6 +78,18 @@ $(document).on('click','.glyphicon-remove-sign',function(e){
 	saveData();
 });
 
+//Format new command
+$("#FormatNew").click(function(e) {
+	e.preventDefault();
+	var cmd = $("#NewCommand").val().replace(/\/\/.*|\"/g,'').replace(/(?:\r\n|\r|\n)/g,";").replace(/\s+/g," ").replace(/;+|\s+;+|;+\s+/g,";");	
+	if (cmd.substring(0,1)===";"){
+		cmd = cmd.substring(1);
+	}
+	if (cmd.substring(--cmd.length)===";"){
+		cmd = cmd.substring(0,--cmd.length);
+	}
+	$("#NewCommand").val(cmd);
+});
 //Create New Command
 $("#CreateNew").click(function(e) {
 	e.preventDefault();

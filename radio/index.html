@@ -136,7 +136,8 @@
 					<label for="NewCommand">Command(s):</label>
 					<textarea class="form-control" autocomplete="off" id="NewCommand" placeholder="Command(s)" required></textarea>
 				</div>
-				<button type="submit" id="CreateNew" class="btn btn-primary">Create Command</button>
+				<button type="submit" id="CreateNew" class="btn btn-success">Create Command</button>
+				<button type="submit" id="FormatNew" class="btn btn-primary">Format Command</button>
 			</form>
 					
 			<p>The "label" text box is the label for the entry.<br>
@@ -146,7 +147,8 @@
 			<p>Example: <pre>voice_enable 0</pre></p>
 			
 			<p>Multi-line commands <strong>work!</strong><br>
-			In the command box, enter your commands in this format: <pre>sv_cheats 1;cl_drawhud 0;noclip</pre></p>
+			In the command box, enter your commands in this format: <pre>sv_cheats 1;cl_drawhud 0;noclip</pre> or click the format button and we will do it for you!</p>
+			<p><strong>Do not</strong> enter alias/bind commands which activate multiple actions at once like so: <pre style="color:red">bind "h" "+jump;-attack"</pre> as the quote marks are removed when added, so your command will not execute as intended</p>
 			
 		</div>
 	</div>
