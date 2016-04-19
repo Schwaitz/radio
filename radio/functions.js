@@ -78,18 +78,36 @@ $(document).on('click','.glyphicon-remove-sign',function(e){
 	saveData();
 });
 
+//Format new command
+$("#FormatNew").click(function(e) {
+	e.preventDefault();
+	var cmd = $("#NewCommand").val().replace(/\/\/.*|\"/g,'').replace(/(?:\r\n|\r|\n)/g,";").replace(/\s+/g," ").replace(/;+|\s+;+|;+\s+/g,";");	
+	if (cmd.substring(0,1)===";"){
+		cmd = cmd.substring(1);
+	}
+	if (cmd.substring(--cmd.length)===";"){
+		cmd = cmd.substring(0,--cmd.length);
+	}
+	$("#NewCommand").val(cmd);
+});
 //Create New Command
 $("#CreateNew").click(function(e) {
 	e.preventDefault();
-	$('#CustomCommands input').each(function(){
+	$('#CustomCommands [required]').each(function(){
 		$(this).val()==""?$(this).focus().parent().addClass("has-error"):$(this).parent().removeClass("has-error");
 	});
 	if ($('#CustomCommands .has-error').length > 0) {
 		return;
 	}
 	var label = $("#NewLabel").val();
-	var cmd = $("#NewCommand").val();
-
+	var cmd = $("#NewCommand").val().replace(/\/\/.*|\"/g,'').replace(/(?:\r\n|\r|\n)/g,";").replace(/\s+/g," ").replace(/;+|\s+;+|;+\s+/g,";");	
+	if (cmd.substring(0,1)===";"){
+		cmd = cmd.substring(1);
+	}
+	if (cmd.substring(--cmd.length)===";"){
+		cmd = cmd.substring(0,--cmd.length);
+	}
+	
 	var str = '<li class="list-group-item" label="'+label+'" value="'+cmd+'" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="'+cmd.replace(/;/g,";<br>")+'"></span>'+label+'</li>';
 	
 	$("#unusedList").append(str);
@@ -120,7 +138,7 @@ $("#View").click(function(){
 	delete radios.Unused;
 	post('./view.php?view', {
 		value: JSON.stringify(radios)
-	});
+	},"_BLANK");
 });
 
 //Delete stored data
@@ -131,14 +149,14 @@ $("#Reset").click(function(){
 });
 
 //post data
-function post(path, params, method) {
-    method = method || "post"; // Set method to post by default if not specified.
+function post(path, params, target="", method="post") {
 
     // The rest of this code assumes you are not using a library.
     // It can be made less wordy if you use one.
     var form = document.createElement("form");
     form.setAttribute("method", method);
     form.setAttribute("action", path);
+    form.setAttribute("target", target);
 
     for (var key in params) {
         if (params.hasOwnProperty(key)) {
