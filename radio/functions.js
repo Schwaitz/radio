@@ -26,6 +26,7 @@ $.getJSON( "commands.json", function( data ) {
 });
 
 //Enable tooltips & show tooltip about title
+$('.colorPicker').tooltip({title:"Color of text",placement:"bottom",trigger:"hover"});
 $('[data-toggle="tooltip"]').tooltip({html:true,trigger:"hover focus click"});
 $('#radio2 [data-toggle="tooltip"]').eq(0).tooltip("show").on('hide.bs.tooltip',function(){$("#radio2 .tooltip").removeClass("highlight");});
 $('#radio2 .tooltip').addClass("highlight");
@@ -108,12 +109,13 @@ $("#CreateNew").click(function(e) {
 		cmd = cmd.substring(0,--cmd.length);
 	}
 	
-	var str = '<li class="list-group-item" label="'+label+'" value="'+cmd+'" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="'+cmd.replace(/;/g,";<br>")+'"></span>'+label+'</li>';
+	var str = '<li class="list-group-item" label="'+label+'" value="'+cmd+'" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="'+cmd.replace(/;/g,";<br>")+'"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>'+label+'</li>';
 	
 	$("#unusedList").append(str);
 	$('#NewLabel').blur().val('');
 	$('#NewCommand').blur().val('');
-	$('[data-toggle="tooltip"]').tooltip({html:true,trigger:"hover focus click"});
+	$('[data-toggle="tooltip"]').tooltip({html:true,trigger:"hover focus"});
+	$('.colorPicker').tooltip({title:"Color of text",placement:"bottom",trigger:"hover"});
 	saveData();
 });
 
