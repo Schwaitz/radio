@@ -11,6 +11,43 @@
     
     <link rel="stylesheet" type="text/css" href="./style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<script>
+	try {
+		var input = document.createElement("input");
+
+		input.type = "color";
+
+		if (input.type === "color") {
+			console.log("supported");
+		} else {
+			var css = '.colorPicker{display:none !important;}',
+			head = document.head || document.getElementsByTagName('head')[0],
+			style = document.createElement('style');
+
+			style.type = 'text/css';
+			if (style.styleSheet){
+			  style.styleSheet.cssText = css;
+			} else {
+			  style.appendChild(document.createTextNode(css));
+			}
+
+			head.appendChild(style);
+		}
+	} catch(e) {
+			var css = '.colorPicker{display:none !important;}',
+			head = document.head || document.getElementsByTagName('head')[0],
+			style = document.createElement('style');
+
+			style.type = 'text/css';
+			if (style.styleSheet){
+			  style.styleSheet.cssText = css;
+			} else {
+			  style.appendChild(document.createTextNode(css));
+			}
+
+			head.appendChild(style);
+	}
+	</script>
 </head>
 
 <body>
@@ -32,15 +69,15 @@
 					  </div>
 					  <div class="panel-body" >
 						<ul id="radio1List" class="list-group">
-							<li class="list-group-item" label="Go!" value="go" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="go"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>Go!</li>
+							<li class="list-group-item" label="Go!" value="go" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="go"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>Go!</li>
 
-							<li class="list-group-item" label="Team, Fall Back!" value="fallback" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="fallback"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>Team, Fall Back!</li>
+							<li class="list-group-item" label="Team, Fall Back!" value="fallback" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="fallback"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>Team, Fall Back!</li>
 
-							<li class="list-group-item" label="Stick Together, Team" value="sticktog" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="sticktog"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>Stick Together, Team</li>
+							<li class="list-group-item" label="Stick Together, Team" value="sticktog" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="sticktog"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>Stick Together, Team</li>
 
-							<li class="list-group-item" label="Hold This Position!" value="holdpos" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="holdpos"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>Hold This Position!</li>
+							<li class="list-group-item" label="Hold This Position!" value="holdpos" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="holdpos"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>Hold This Position!</li>
 
-							<li class="list-group-item" label="Follow Me!" value="followme" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="followme"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>Follow Me!</li>
+							<li class="list-group-item" label="Follow Me!" value="followme" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="followme"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>Follow Me!</li>
 						</ul>
 					  </div>
 					</div>
@@ -52,15 +89,15 @@
 					  </div>
 					  <div class="panel-body" >
 						<ul id="radio2List" class="list-group">
-							<li class="list-group-item" label="Yes" value="roger" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="roger"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>Yes</li>
+							<li class="list-group-item" label="Yes" value="roger" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="roger"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>Yes</li>
 
-							<li class="list-group-item" label="No" value="negative" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="negative"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>No</li>
+							<li class="list-group-item" label="No" value="negative" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="negative"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>No</li>
 
-							<li class="list-group-item" label="Cheer" value="cheer" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="cheer"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>Cheer</li>
+							<li class="list-group-item" label="Cheer" value="cheer" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="cheer"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>Cheer</li>
 
-							<li class="list-group-item" label="Complement" value="compliment" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="compliment"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>Complement</li>
+							<li class="list-group-item" label="Complement" value="compliment" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="compliment"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>Complement</li>
 
-							<li class="list-group-item" label="Thanks" value="thanks" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="thanks"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>Thanks</li>
+							<li class="list-group-item" label="Thanks" value="thanks" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="thanks"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>Thanks</li>
 						</ul>
 					  </div>
 					</div>
@@ -72,15 +109,15 @@
 					  </div>
 					  <div class="panel-body" >
 						<ul id="radio3List" class="list-group">
-							<li class="list-group-item" label="Enemy Spotted" value="enemyspot" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="enemyspot"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>Enemy Spotted</li>
+							<li class="list-group-item" label="Enemy Spotted" value="enemyspot" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="enemyspot"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>Enemy Spotted</li>
 
-							<li class="list-group-item" label="Need Backup" value="needbackup" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="needbackup"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>Need Backup</li>
+							<li class="list-group-item" label="Need Backup" value="needbackup" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="needbackup"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>Need Backup</li>
 
-							<li class="list-group-item" label="You Take the Point" value="takepoint" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="takepoint"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>You Take the Point</li>
+							<li class="list-group-item" label="You Take the Point" value="takepoint" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="takepoint"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>You Take the Point</li>
 
-							<li class="list-group-item" label="Sector Clear" value="sectorclear" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="sectorclear"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>Sector Clear</li>
+							<li class="list-group-item" label="Sector Clear" value="sectorclear" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="sectorclear"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>Sector Clear</li>
 
-							<li class="list-group-item" label="I'm in Position" value="inposition" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="inposition"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>I'm in Position</li>
+							<li class="list-group-item" label="I'm in Position" value="inposition" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="inposition"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>I'm in Position</li>
 						</ul>
 					  </div>
 					</div>
@@ -92,19 +129,19 @@
 					  </div>
 					  <div class="panel-body" >
 						<ul id="unusedList" class="list-group">
-							<li class="list-group-item" label="Cover Me!" value="coverme" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="coverme"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>Cover Me!</li>
+							<li class="list-group-item" label="Cover Me!" value="coverme" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="coverme"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>Cover Me!</li>
 
-							<li class="list-group-item" label="Regroup, Team!" value="regroup" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="regroup"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>Regroup, Team!</li>
+							<li class="list-group-item" label="Regroup, Team!" value="regroup" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="regroup"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>Regroup, Team!</li>
 
-							<li class="list-group-item" label="Taking Fire, Need Assistance!" value="takingfire" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="takingfire"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>Taking Fire, Need Assistance!</li>
+							<li class="list-group-item" label="Taking Fire, Need Assistance!" value="takingfire" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="takingfire"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>Taking Fire, Need Assistance!</li>
 
-							<li class="list-group-item" label="Report In" value="report" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="report"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>Report In</li>
+							<li class="list-group-item" label="Report In" value="report" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="report"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>Report In</li>
 
-							<li class="list-group-item" label="She's gonna Blow!" value="getout" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="getout"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>She's gonna Blow!</li>
+							<li class="list-group-item" label="She's gonna Blow!" value="getout" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="getout"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>She's gonna Blow!</li>
 
-							<li class="list-group-item" label="Enemy Down" value="enemydown" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="enemydown"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>Enemy Down</li>
+							<li class="list-group-item" label="Enemy Down" value="enemydown" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="enemydown"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>Enemy Down</li>
 
-							<li class="list-group-item" label="Reporting In" value="reportingin" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="reportingin"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>Reporting In</li>
+							<li class="list-group-item" label="Reporting In" value="reportingin" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="reportingin"></span><div class="colorPicker"><input type="color" value="#cccccc"></div>Reporting In</li>
 						</ul>
 					  </div>
 					</div>
@@ -174,7 +211,7 @@
 	<div id="footer" class="container-fluid">
 		<p>created for <a href="http://www.reddit.com/r/GlobalOffensive" target="_BLANK">/r/GlobalOffensive</a> and <a href="http://www.reddit.com/r/GlobalOffensiveTrade" target="_BLANK">/r/GlobalOffensiveTrade</a> | <a href="https://github.com/Schwaitz/radio" target="_BLANK">Contribute @ Github</a> | <a href="" data-toggle="modal" data-target="#Credits">Credits</a></p>
 	</div>
-    <script src="../javascript/jquery-1.12.2.min.js" type="text/javascript"></script>
+    <script src="../javascript/jquery-2.2.3.min.js" type="text/javascript"></script>
     <script src="../javascript/jquery.autocomplete.min.js" type="text/javascript"></script>
     <script src="../javascript/sortable.min.js" type="text/javascript"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
