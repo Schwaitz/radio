@@ -6,10 +6,11 @@ if (localStorage.getItem('Radios')){
 	Object.keys(radios).forEach(function(key){
 		var items = radios[key];
 		$('.panel-title').eq(i).html(key);
-		Object.keys(items).forEach(function(item){
-			var label=item;
-			var cmd=items[item];
-			str = '<li class="list-group-item" label="'+label+'" value="'+cmd+'" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="'+cmd.replace(/;/g,";<br>")+'"></span>'+label+'</li>';
+		items.forEach(function(item){
+			var label=item.label;
+			var cmd=item.command;
+			var color=item.color;
+			str = '<li class="list-group-item" label="'+label+'" value="'+cmd+'" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="'+cmd.replace(/;/g,";<br>")+'"></span><div class="colorPicker"><input type="color" value="'+color+'"></div>'+label+'</li>';
 			$('.list-group').eq(i).append(str);
 		});
 		i++;
@@ -26,35 +27,44 @@ $.getJSON( "commands.json", function( data ) {
 });
 
 //Enable tooltips & show tooltip about title
+$('.colorPicker').tooltip({title:"Color of text",placement:"bottom",trigger:"hover"});
 $('[data-toggle="tooltip"]').tooltip({html:true,trigger:"hover focus click"});
 $('#radio2 [data-toggle="tooltip"]').eq(0).tooltip("show").on('hide.bs.tooltip',function(){$("#radio2 .tooltip").removeClass("highlight");});
 $('#radio2 .tooltip').addClass("highlight");
 
 //Gather data from list's and save to database
 function saveData() {
-	var rmArray1 = {};
-	var rmArray2 = {};
-	var rmArray3 = {};
-	var unusedArr = {};
+	var rmArray1 = [];
+	var rmArray2 = [];
+	var rmArray3 = [];
+	var unusedArr = [];
 	
 	$("#radio1 li").each(function() {
 		var label = $(this).attr("label");
-		rmArray1[label]=$(this).attr("value");
+		var command = $(this).attr("value");
+		var color = $(this).find('input[type=color]').val();
+		rmArray1.push({label:label,command:command,color:color});
 	});
 	
 	$("#radio2 li").each(function() {
 		var label = $(this).attr("label");
-		rmArray2[label]=$(this).attr("value");
+		var command = $(this).attr("value");
+		var color = $(this).find('input[type=color]').val();
+		rmArray2.push({label:label,command:command,color:color});
 	});
 	
 	$("#radio3 li").each(function() {
 		var label = $(this).attr("label");
-		rmArray3[label]=$(this).attr("value");
+		var command = $(this).attr("value");
+		var color = $(this).find('input[type=color]').val();
+		rmArray3.push({label:label,command:command,color:color});
 	});
 
 	$("#unused li").each(function() {
 		var label = $(this).attr("label");
-		unusedArr[label]=$(this).attr("value");
+		var command = $(this).attr("value");
+		var color = $(this).find('input[type=color]').val();
+		unusedArr.push({label:label,command:command,color:color});
 	});
 	var array = {};
 
@@ -63,8 +73,6 @@ function saveData() {
 	array[$('#radio3 .panel-title').html()] = rmArray3;
 	array['Unused'] = unusedArr;
 
-
-	
 	localStorage.setItem('Radios', JSON.stringify(array));
 	radios = array;
 }
@@ -108,12 +116,13 @@ $("#CreateNew").click(function(e) {
 		cmd = cmd.substring(0,--cmd.length);
 	}
 	
-	var str = '<li class="list-group-item" label="'+label+'" value="'+cmd+'" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="'+cmd.replace(/;/g,";<br>")+'"></span>'+label+'</li>';
+	var str = '<li class="list-group-item" label="'+label+'" value="'+cmd+'" draggable="true"><a href=""><span class="glyphicon glyphicon-remove-sign"></span></a><span class="glyphicon glyphicon-info-sign" data-toggle="tooltip" data-placement="bottom" title="'+cmd.replace(/;/g,";<br>")+'"></span><div class="colorPicker"><input type="color" value="#CCCCCC"></div>'+label+'</li>';
 	
 	$("#unusedList").append(str);
 	$('#NewLabel').blur().val('');
 	$('#NewCommand').blur().val('');
-	$('[data-toggle="tooltip"]').tooltip({html:true,trigger:"hover focus click"});
+	$('[data-toggle="tooltip"]').tooltip({html:true,trigger:"hover focus"});
+	$('.colorPicker').tooltip({title:"Color of text",placement:"bottom",trigger:"hover"});
 	saveData();
 });
 
@@ -135,6 +144,7 @@ $("#Generate").click(function(){
 //View 'radiopanel.txt' in modal
 $("#View").click(function(){
 	saveData();
+	console.log(radios);
 	delete radios.Unused;
 	post('./view.php?view', {
 		value: JSON.stringify(radios)
@@ -149,8 +159,9 @@ $("#Reset").click(function(){
 });
 
 //post data
-function post(path, params, target="", method="post") {
-
+function post(path, params, target, method) {
+	target = target || "";
+	method = method || "post";
     // The rest of this code assumes you are not using a library.
     // It can be made less wordy if you use one.
     var form = document.createElement("form");

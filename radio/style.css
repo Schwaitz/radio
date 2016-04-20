@@ -57,6 +57,26 @@ option {
 	color:red;
 	cursor:pointer !important;
 }
+.colorPicker{
+    border-radius: 50px;
+    float: right;
+    height: 20px;
+    position: relative;
+    overflow: hidden;
+    width: 20px;
+	cursor:pointer;
+}
+.colorPicker input{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    margin: 0px;
+    padding: 0px;
+    border: 1px solid black;
+    top: -8px;
+    left: -8px;
+	cursor:pointer;
+}
 *{
   -webkit-user-select: none;   /* Chrome/Safari/Opera */
   -khtml-user-select: none;    /* Konqueror */
@@ -85,6 +105,18 @@ option {
 	height:50px;
 	margin-left:5px;
 	margin-right:5px;
+}
+#CustomCommands .input-group{
+	width:100%;
+}
+#CustomCommands .input-group-addon{
+	padding:0px;
+}
+#CustomCommands [type=color]{
+	height:100%;
+	width:30px;
+	padding:0px;
+	margin:0px;
 }
 
 .tooltip,.tooltip-inner{

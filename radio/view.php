@@ -6,7 +6,7 @@ if (!isset($_GET['view'])){
 	header('Content-Disposition: attachment; filename="radiopanel.txt"');
 }
 $groups=['standard','group','report'];
-$array= json_decode($_POST['value']);
+$array= json_decode($_POST['value'],true);
 ?>
 "RadioPanel.txt"
 {
@@ -20,15 +20,22 @@ $array= json_decode($_POST['value']);
 			"timeout"	"5"
 			
 			"Commands"
-			{<?php $hotkey=0; foreach ($commands as $label => $value){ ?>
+			{<?php $hotkey=0; while ($hotkey < count($commands) && $hotkey < 9){ 
+			if ($commands[$hotkey]['color']!="#cccccc"){
+				$label="<font color='".$commands[$hotkey]['color']."'>".$commands[$hotkey]['label']."</font>";
+			}else {
+				$label=$commands[$hotkey]['label'];
+			}
+			$cmd = $commands[$hotkey]['command'];
+			?>
 				
 				"<?=$label?>"
 				{
 					"hotkey"	"<?=++$hotkey?>"
 					"label"	"<?=$label?>"
-					"cmd"	"<?=$value?>"
+					"cmd"	"<?=$cmd?>"
 				}
-			<?php if ($hotkey==9) {break;}} ?>
+			<?php } ?>
 				
 			}
 		}<?php } ?>
